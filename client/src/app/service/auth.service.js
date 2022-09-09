@@ -10,7 +10,8 @@ export const authService = {
     });
 
     if (res.data.token) {
-      saveToLocalStorage(res.data.data);
+      saveToLocalStorage('user', res.data.data);
+      saveToLocalStorage('token', res.data.token);
     }
     return res;
   },
@@ -21,12 +22,10 @@ export const authService = {
       firstName,
       age,
     });
-
-    if (res.data.token) {
-      saveToLocalStorage(res.data.data);
-    }
-
     return res;
   },
-  getProfile: async () => {},
+  logout: () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  },
 };

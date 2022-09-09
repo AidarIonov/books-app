@@ -17,7 +17,15 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  console.log(config);
+  const token = JSON.parse(localStorage.getItem('token'));
+  if (config.headers && token) {
+    config.headers = {
+      ...config.headers,
+      'X-Auth': token,
+    };
+  }
+
+  return config;
 });
 
 export default instance;

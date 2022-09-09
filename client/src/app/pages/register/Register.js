@@ -38,7 +38,7 @@ const Register = {
   },
   after_render: async () => {
     const redirectToLoginPage = () => {
-      redirect('/#/login')
+      redirect('/#/login');
     };
 
     const handleSubmit = async ({ username, password, firstName, age }) => {

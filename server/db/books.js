@@ -61,6 +61,11 @@ const main = expanded.map((item) => ({
   name: item.name,
   author: item.author,
   isFavorite: item.isFavorite,
+  publishYear: item.publishYear,
+  publishHouse: item.publishHouse,
+  pagesNumber: item.pagesNumber,
+  genres: item.genres,
+  originalLanguage: item.originalLanguage,
 }))
 
 module.exports = {

@@ -1,3 +1,4 @@
+import { authService } from '../service/auth.service';
 import { getUserOrRedirect } from '../utils/getUserOrRedirect';
 import { redirect } from '../utils/redirect';
 import './header.scss';
@@ -20,15 +21,16 @@ const Header = {
     const logoutBtn = document.querySelector('.logout-btn');
     if (currentUser) {
       user.textContent = currentUser.username;
+      logoutBtn.style.display = 'inline-block'
       logoutBtn.textContent = 'Logout';
       logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('user');
+        authService.logout()
         redirect('/#/login');
       });
     } else {
-      window.location.replace('http://localhost:8081/#/login');
+      logoutBtn.style.display = 'none'
+      // window.location.replace('http://localhost:8081/#/login');
     }
-    logic();
   },
 };
 export default Header;
