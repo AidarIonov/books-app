@@ -1,5 +1,8 @@
+import { showError, showSuccessMsg } from '../../../shared/lib/alerts';
 import { authService } from '../../service/auth.service';
+import { errorCatch } from '../../utils/errorCatch';
 import FormValidator, { validateLength } from '../../utils/FormValidator';
+import { redirect } from '../../utils/redirect';
 import './login.scss';
 
 const Login = {
@@ -23,9 +26,18 @@ const Login = {
     </div>
   `,
   after_render: async () => {
+    const redirectToHome = () => {
+      redirect('/');
+    };
     const handleSubmit = async (data) => {
-      const res = await authService.login(data.username, data.password);
-      console.log(res);
+      try {
+        const res = await authService.login(data.username, data.password);
+        if (res.data) {
+          showSuccessMsg('Заебись', redirectToHome);
+        }
+      } catch (error) {
+        showError(errorCatch(error));
+      }
     };
     const loginForm = new FormValidator('#login-form', handleSubmit);
     loginForm.register('.username-field', validateLength);

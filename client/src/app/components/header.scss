@@ -13,6 +13,14 @@
   }
 }
 
+.header__right {
+  @include flex(center);
+  gap: 10px;
+  font-weight: 500;
+}
+
+
+
 .header__title {
   text-transform: uppercase;
   font-size: 2.5rem;

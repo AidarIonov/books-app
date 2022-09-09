@@ -74,5 +74,23 @@ ul {
   padding: 8px 15px;
   cursor: pointer;
   border-radius: 2px;
+  border: none;
 }
 
+.alert-btn {
+  background-color: #96ceb4;
+  width: 100px;
+}
+
+.app-alert {
+  .swal2-popup {
+    max-width: 500px;
+    width: 100%;
+    padding: 40px 0;
+  }
+}
+
+.alert-text {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+}

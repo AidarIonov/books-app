@@ -8,3 +8,16 @@ export const axiosClient = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+export const instance = axios.create({
+  baseURL: SERVER_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+instance.interceptors.request.use((config) => {
+  console.log(config);
+});
+
+export default instance;

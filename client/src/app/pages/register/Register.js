@@ -1,4 +1,9 @@
+import { showError, showSuccessMsg } from '../../../shared/lib/alerts';
+import { authService } from '../../service/auth.service';
+import { errorCatch } from '../../utils/errorCatch';
 import FormValidator, { validateLength } from '../../utils/FormValidator';
+import { redirect } from '../../utils/redirect';
+
 import '../login/login.scss';
 
 const Register = {
@@ -32,9 +37,24 @@ const Register = {
       `;
   },
   after_render: async () => {
-    const handleSubmit = async (data) => {
-      // const res = await authService.login(data.username, data.password);
-      console.log(data);
+    const redirectToLoginPage = () => {
+      redirect('/#/login')
+    };
+
+    const handleSubmit = async ({ username, password, firstName, age }) => {
+      try {
+        const res = await authService.register(
+          username,
+          password,
+          firstName,
+          age
+        );
+        if (res.data) {
+          showSuccessMsg('Заебцаа', redirectToLoginPage);
+        }
+      } catch (error) {
+        showError(errorCatch(error));
+      }
     };
     const loginForm = new FormValidator('#register-form', handleSubmit);
     loginForm.register('.username-field', validateLength);
