@@ -1,11 +1,11 @@
 export const layout = (bookInfo) => {
-  return dedent`
+  return `
       <div class="modal-about" id="modal-about">
           <div class="modal-about__wrapper">
               <div class="modal-about__container animate animate__zoomIn" id="modal-about-container">
                   <div class="modal-about__content">
-                      <button class="btn-default modal-about__btn-close" id="modal-order-close-btn" type="button">
-                          <img src="assets/icons/x-mark.svg" alt="x-mark">
+                      <button class="btn modal-about__btn-close" id="modal-order-close-btn" type="button">
+                          X
                       </button>
                       <h2 class="modal-about__title">Book Info</h2>
                       <h3 class="modal-about__book-title">${bookInfo.name}</h3>
@@ -15,16 +15,22 @@ export const layout = (bookInfo) => {
                               <p>
                                   <span class="modal-about__prop-label">Publish house:</span> ${
                                     bookInfo.publishHouse
+                                      ? bookInfo.publishHouse
+                                      : 'Unknown'
                                   }
                               </p>
                               <p>
                                   <span class="modal-about__prop-label">Lang:</span> ${
                                     bookInfo.originalLanguage
+                                      ? bookInfo.originalLanguage
+                                      : 'Unknown'
                                   }
                                   </p>
                               <p>
                                   <span class="modal-about__prop-label">Publish year:</span> ${
                                     bookInfo.publishYear
+                                      ? bookInfo.publishYear
+                                      : 'Unknown'
                                   }
                               </p>
                           </div>
@@ -32,21 +38,25 @@ export const layout = (bookInfo) => {
                               <p>
                                   <span class="modal-about__prop-label">Pages number:</span> ${
                                     bookInfo.pagesNumber
+                                      ? bookInfo.pagesNumber
+                                      : 'Unknown'
                                   }
                               </p>
                               <p>
-                                  <span class="modal-about__prop-label">Genres:</span> ${bookInfo.genres.join(
-                                    ', '
-                                  )}
+                                  <span class="modal-about__prop-label">Genres:</span>  ${
+                                    bookInfo.genres.length > 1
+                                      ? bookInfo.genres.join(', ')
+                                      : 'Unknown'
+                                  }
                               </p>
                           </div>
                       </div>
                       <div class="modal-about__buttons">
-                          <button class="btn-default modal-about__btn-edit" id="modal-about-btn-edit" type="button">
+                          <button class="btn modal-about__btn-edit" id="modal-about-btn-edit" type="button">
                               Edit
                           </button>
                           
-                          <button class="btn-square" id="btn-favorite" type="button">
+                          <button class="btn btn-square" id="btn-favorite" type="button">
                               <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path 
                                       id="modal-about-btn-favorite-icon"
@@ -63,7 +73,7 @@ export const layout = (bookInfo) => {
                               </svg>
                           </button>
                           
-                          <button class="btn-square" id="btn-trash" type="button">
+                          <button class="btn-square btn" id="btn-trash" type="button">
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path   
                                       fill="#B1B1B1" 

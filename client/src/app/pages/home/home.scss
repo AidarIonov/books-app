@@ -15,17 +15,34 @@
     display: block;
     margin: 30px auto;
   }
+  &__item-edit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    transition: .2s all ease;
+    pointer-events: none;
+  }
   h2 {
     text-align: center;
   }
   &__item {
     @include flex;
     flex-direction: column;
+    position: relative;
     border: 1px solid #e5e5e5;
     border-radius: 8px;
     padding: 35px;
     cursor: pointer;
     width: 100%;
+    &:hover {
+      .books__item-edit {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
     p {
       flex: 1 0 auto;
       margin: 20px 0;

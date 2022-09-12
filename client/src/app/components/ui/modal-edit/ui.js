@@ -1,5 +1,5 @@
 export const layout = (bookInfo) => {
-  return dedent`
+  return `
       <div class="modal-edit" id="modal-edit">
           <div class="modal-edit__wrapper">
               <div class="modal-edit__container animate animate__zoomIn" id="modal-edit-container">
@@ -84,7 +84,7 @@ export const layout = (bookInfo) => {
                                       class="default-form__input"
                                       type="text"
                                       name="genres"
-                                      value="${bookInfo.genres.join(", ")}"
+                                      value="${bookInfo.genres.join(', ')}"
                                       placeholder="Genres"
                                   >
                               </label>
