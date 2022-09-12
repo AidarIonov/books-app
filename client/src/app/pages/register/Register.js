@@ -14,19 +14,19 @@ const Register = {
         <form id='register-form' class="form">
         <h2>Sign Up</h2>
         <div class="form-field">
-          <input type="text" name='username' class='username-field' placeholder='Username'/>
+          <input type="text" name='username' class='username-field field-common' placeholder='Username'/>
           <span class="error-message"></span>
         </div>
         <div class="form-field">
-          <input type="password" name='password' class='password-field' placeholder='password'/>
+          <input type="password" name='password' class='password-field field-common' placeholder='password'/>
           <span class="error-message"></span>
         </div>
         <div class="form-field">
-          <input type="text" name='firstName' class='firstName-field' placeholder='First name'/>
+          <input type="text" name='firstName' class='firstName-field field-common' placeholder='First name'/>
           <span class="error-message"></span>
         </div>
         <div class="form-field">
-          <input type="number" name='age' class='age-field' placeholder='Your age'/>
+          <input type="number" name='age' class='age-field field-common' placeholder='Your age'/>
           <span class="error-message"></span>
         </div>
         <button class="btn form-btn">Sign Up</button>

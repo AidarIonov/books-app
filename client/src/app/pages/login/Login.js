@@ -12,11 +12,11 @@ const Login = {
       <form id='login-form' class="form">
         <h2>Sign In</h2>
         <div class="form-field">
-          <input type="text" name='username' class='username-field' placeholder='Username'/>
+          <input type="text" name='username' class='username-field field-common' placeholder='Username'/>
           <span class="error-message"></span>
         </div>
         <div class="form-field">
-          <input type="password" name='password' class='password-field' placeholder='password'/>
+          <input type="password" name='password' class='password-field field-common' placeholder='password'/>
           <span class="error-message"></span>
         </div>
         <button class="btn form-btn">Sign In</button>

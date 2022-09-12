@@ -1,4 +1,5 @@
 import { showError } from '../../../shared/lib/alerts';
+import { ModalBookCreate } from '../../components/ui/modal-create';
 import { booksService } from '../../service/books.service';
 import { getUserOrRedirect } from '../../utils/getUserOrRedirect';
 import { redirect } from '../../utils/redirect';
@@ -8,8 +9,8 @@ const Home = {
   render: async () => `
     <div class="wrapper">
       <div class="container">
+      <div class="books"></div>
       <button class="btn books__btn">Add a book</button>
-        <div class="books"></div>
       </div>
     </div>
   `,
@@ -46,6 +47,10 @@ const Home = {
     } catch (err) {
       showError('Oops, something went wrong');
     }
+    const btnAddBook = document.querySelector(".books__btn");
+    btnAddBook.addEventListener('click', () => {
+      ModalBookCreate.open()
+    })
   },
 };
 

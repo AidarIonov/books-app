@@ -7,7 +7,7 @@ export class FormValidator {
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!this.hasErrors) {
-        onSubmit(this.fields);
+        onSubmit(this.fields, e);
       }
     });
   }
