@@ -3,21 +3,23 @@ import { layout } from './ui';
 import FormValidator, { validateLength } from '../../../utils/FormValidator';
 import { booksService } from '../../../service/books.service';
 import './index.scss';
+import { errorCatch } from '../../../utils/errorCatch';
 
 const open = () => {
   try {
     const domParser = new DOMParser();
     const htmlTemplate = domParser.parseFromString(layout(), 'text/html');
     const modalWindow = document.body.appendChild(htmlTemplate.body.firstChild);
-
+    document.body.style.overflow = 'hidden'
     const bookForm = new FormValidator('#modal-create-form', onFormSubmit);
     bookForm.register('#modal-create-field-name', validateLength);
     bookForm.register('#modal-create-field-author', validateLength);
 
     const btnClose = document.getElementById('modal-create-btn-close');
-    btnClose.onclick = () => {
+    btnClose.addEventListener('click', () => {
       modalWindow.remove();
-    };
+      document.body.style.overflow = ''
+    })
 
     const onKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -50,7 +52,7 @@ const onFormSubmit = (_, event) => {
         });
       }
     } catch (err) {
-      showError(err);
+      showError(errorCatch(err));
     }
   }, 80);
 };

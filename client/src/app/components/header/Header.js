@@ -1,8 +1,7 @@
-import { authService } from '../service/auth.service';
-import { getUserOrRedirect } from '../utils/getUserOrRedirect';
-import { redirect } from '../utils/redirect';
+import { authService } from '../../service/auth.service';
+import { getUserOrRedirect } from '../../utils/getUserOrRedirect';
+import { redirect } from '../../utils/redirect';
 import './header.scss';
-import { logic } from './logic';
 const Header = {
   render: async () => {
     return `

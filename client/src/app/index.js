@@ -1,6 +1,6 @@
 import { parseRequestUrl } from './utils/parseRequestUrl';
 import Home from './pages/home/Home';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 

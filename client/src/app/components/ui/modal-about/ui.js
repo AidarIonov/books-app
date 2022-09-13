@@ -1,12 +1,6 @@
 export const layout = (bookInfo) => {
   return `
-      <div class="modal-about" id="modal-about">
-          <div class="modal-about__wrapper">
-              <div class="modal-about__container animate animate__zoomIn" id="modal-about-container">
-                  <div class="modal-about__content">
-                      <button class="btn modal-about__btn-close" id="modal-order-close-btn" type="button">
-                          X
-                      </button>
+     
                       <h2 class="modal-about__title">Book Info</h2>
                       <h3 class="modal-about__book-title">${bookInfo.name}</h3>
                       <h4 class="modal-about__author">${bookInfo.author}</h4>
@@ -55,8 +49,7 @@ export const layout = (bookInfo) => {
                           <button class="btn modal-about__btn-edit" id="modal-about-btn-edit" type="button">
                               Edit
                           </button>
-                          
-                          <button class="btn btn-square" id="btn-favorite" type="button">
+                          <button class="btn" id="btn-favorite-modal" type="button">
                               <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path 
                                       id="modal-about-btn-favorite-icon"
@@ -73,7 +66,7 @@ export const layout = (bookInfo) => {
                               </svg>
                           </button>
                           
-                          <button class="btn-square btn" id="btn-trash" type="button">
+                          <button class="btn" id="btn-trash-modal" type="button">
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path   
                                       fill="#B1B1B1" 
@@ -86,9 +79,5 @@ export const layout = (bookInfo) => {
                               </svg>
                           </button>
                       </div>
-                  </div>
-              </div>
-          </div>
-      </div>
   `;
 };

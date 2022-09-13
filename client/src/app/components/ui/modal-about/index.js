@@ -12,19 +12,21 @@ const open = async (bookId, onDelete, onFavoriteToggle) => {
       layout(bookInfo),
       'text/html'
     );
+    document.body.style.overflow = 'hidden';
 
     const modalWindow = document.body.appendChild(htmlTemplate.body.firstChild);
     const btnAboutModalClose = document.getElementById('modal-order-close-btn');
-    btnAboutModalClose.onclick = () => {
+    btnAboutModalClose.addEventListener('click', () => {
       modalWindow.remove();
-    };
+      document.body.style.overflow = '';
+    });
 
     const btnTrash = document.getElementById('btn-trash');
-    btnTrash.onclick = () => {
+    btnTrash.addEventListener('click', () => {
       btnAboutModalClose.click();
       onDelete(bookInfo);
-    };
-
+    })
+    
     const btnFavorite = document.getElementById('btn-favorite');
     btnFavorite.addEventListener('click', async () => {
       if (await onFavoriteToggle(bookInfo)) {

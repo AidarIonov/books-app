@@ -42,6 +42,9 @@ export const deleteDialog = async (onDelete) => {
     if (result.isConfirmed) {
       onDelete();
       await Swal.fire({
+        customClass: {
+          container: 'app-alert',
+        },
         title: 'Deleted!',
         text: 'Your file has been deleted.',
         icon: 'success',

@@ -8,7 +8,6 @@ export const layout = () => {
                           X
                       </button>
                       <h2 class="modal-create__title">Add Book</h2>
-                      
                       <form class="default-form modal-create-form" id="modal-create-form" autocomplete="off">
                           <div class="default-form__field">
                               <label>
@@ -20,7 +19,7 @@ export const layout = () => {
                                       name="name"
                                       placeholder="Title"
                                   >
-                                  <span class="default-form__err-label" id="modal-create-field-name-err"></span>
+                                  <span class="error-message modal-create-form__err" id="modal-create-field-name-err"></span>
                               </label>
                           </div>
                           <div class="default-form__field">
@@ -33,7 +32,7 @@ export const layout = () => {
                                       name="author"
                                       placeholder="Author"
                                   >
-                                  <span class="default-form__err-label" id="modal-create-field-author-err"></span>
+                                  <span class="error-message modal-create-form__err" id="modal-create-field-author-err"></span>
                               </label>
                           </div>
                           <div class="default-form__field">

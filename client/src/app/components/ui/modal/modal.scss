@@ -1,0 +1,24 @@
+@use '../../../../scss/utils/' as *;
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.5);
+  @include flex(center, center);
+  &__content {
+    background-color: #fff;
+    padding: 40px;
+    position: relative;
+    width: 40vw;
+  }
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+}
