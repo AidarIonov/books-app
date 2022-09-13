@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
-    "build": "npx webpack --config ./build/webpack.build.conf.js"
+    "dev": "webpack-dev-server --open --config ./webpack/webpack.dev.conf.js",
+    "build": "npx webpack --config ./webpack/webpack.build.conf.js"
   },
   "keywords": [],
   "author": "",

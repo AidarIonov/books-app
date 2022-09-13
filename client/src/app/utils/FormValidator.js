@@ -1,13 +1,14 @@
 export class FormValidator {
-  constructor(selector, onSubmit) {
+  constructor(selector, onSubmit, bookId = null) {
     this.form = document.querySelector(selector);
     this.inputsWithErrors = new Set();
     this.fields = {};
+    this.bookId = bookId
 
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
       if (!this.hasErrors) {
-        onSubmit(this.fields, e);
+        onSubmit(this.fields, e, bookId);
       }
     });
   }

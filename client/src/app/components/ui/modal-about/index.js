@@ -1,74 +1,50 @@
-import { showError } from '../../../../shared/lib/alerts';
-import { booksService } from '../../../service/books.service';
-import { ModalEdit } from '../modal-edit';
-import { layout } from './ui';
-import './index.scss';
+import { deleteDialog, showError } from "../../../shared/lib/alerts";
+import { booksService } from "../../../service/books.service";
 
-const open = async (bookId, onDelete, onFavoriteToggle) => {
+const onDeleteBook = async (book) => {
+  let result = false;
+  await deleteDialog(async () => {
+    await booksService.delete(book.id);
+    const bookCard = document.getElementById(book.id);
+    bookCard.remove();
+    result = true;
+  });
+
+  return result;
+};
+
+const onCardFavoriteToggle = async (bookInfoBeforeCommit) => {
   try {
-    const { data: bookInfo } = await booksService.getById(bookId);
-    const domParser = new DOMParser();
-    const htmlTemplate = domParser.parseFromString(
-      layout(bookInfo),
-      'text/html'
-    );
-    document.body.style.overflow = 'hidden';
-
-    const modalWindow = document.body.appendChild(htmlTemplate.body.firstChild);
-    const btnAboutModalClose = document.getElementById('modal-order-close-btn');
-    btnAboutModalClose.addEventListener('click', () => {
-      modalWindow.remove();
-      document.body.style.overflow = '';
+    await booksService.update(bookInfoBeforeCommit.id, {
+      isFavorite: !bookInfoBeforeCommit.isFavorite,
     });
-
-    const btnTrash = document.getElementById('btn-trash');
-    btnTrash.addEventListener('click', () => {
-      btnAboutModalClose.click();
-      onDelete(bookInfo);
-    })
-    
-    const btnFavorite = document.getElementById('btn-favorite');
-    btnFavorite.addEventListener('click', async () => {
-      if (await onFavoriteToggle(bookInfo)) {
-        bookInfo.isFavorite = !bookInfo.isFavorite;
-        const btnFavoriteIcon = document.getElementById(
-          'modal-about-btn-favorite-icon'
-        );
-        btnFavoriteIcon.setAttribute(
-          'fill',
-          bookInfo.isFavorite ? 'red' : 'gray'
-        );
-      }
-    });
-
-    const btnEdit = document.getElementById('modal-about-btn-edit');
-    btnEdit.addEventListener('click', () => {
-      window.removeEventListener('keydown', onKeyDown);
-      ModalEdit.open(
-        bookInfo,
-        () => window.addEventListener('keydown', onKeyDown),
-        async () => {
-          if (await onDelete(bookInfo)) {
-            btnAboutModalClose.click();
-            return true;
-          }
-        }
-      );
-    });
-
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        btnAboutModalClose.click();
-        window.removeEventListener('keydown', onKeyDown);
-      }
-    };
-
-    window.addEventListener('keydown', onKeyDown);
+    return true;
   } catch (err) {
-    showError(err);
+    showError(errorCatch(err));
+    return false;
   }
 };
 
-export const ModalAbout = {
-  open,
+
+export const modalTrashBtnHandler = (book) => {
+  const trashBtn = document.querySelector('#btn-trash-modal');
+  trashBtn.addEventListener('click', () => {
+    onDeleteBook(book);
+  });
+};
+
+export const modalFavoriteBtnHandler = (book) => {
+  const favoriteBtn = document.querySelector('#btn-favorite-modal');
+  const btnFavoriteIcon = document.getElementById(
+    'modal-about-btn-favorite-icon'
+  );
+  favoriteBtn.addEventListener('click', async () => {
+    if (await onCardFavoriteToggle(book)) {
+      book.isFavorite = !book.isFavorite;
+      btnFavoriteIcon.setAttribute(
+        'fill',
+        book.isFavorite ? 'red' : 'gray'
+      );
+    }
+  });
 };

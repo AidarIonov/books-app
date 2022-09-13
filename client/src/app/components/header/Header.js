@@ -1,5 +1,5 @@
 import { authService } from '../../service/auth.service';
-import { getUserOrRedirect } from '../../utils/getUserOrRedirect';
+import { getUser } from '../../utils/getUser';
 import { redirect } from '../../utils/redirect';
 import './header.scss';
 const Header = {
@@ -15,7 +15,7 @@ const Header = {
       `;
   },
   after_render: async () => {
-    const currentUser = getUserOrRedirect();
+    const currentUser = getUser();
     const user = document.getElementById('user');
     const logoutBtn = document.querySelector('.logout-btn');
     if (currentUser) {

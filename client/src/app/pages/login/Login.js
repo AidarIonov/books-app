@@ -1,4 +1,4 @@
-import { showError, showSuccessMsg } from '../../../shared/lib/alerts';
+import { showError, showSuccessMsg } from '../../shared/lib/alerts';
 import { authService } from '../../service/auth.service';
 import { errorCatch } from '../../utils/errorCatch';
 import FormValidator, { validateLength } from '../../utils/FormValidator';

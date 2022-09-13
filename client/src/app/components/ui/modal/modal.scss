@@ -9,16 +9,30 @@
   z-index: 50;
   background-color: rgba(0, 0, 0, 0.5);
   @include flex(center, center);
+  animation: fade .3s ease;
   &__content {
     background-color: #fff;
-    padding: 40px;
+    padding: 20px 40px;
     position: relative;
     width: 40vw;
+    border-radius: 10px;
+  }
+  &__close {
+    font-weight: 700;
   }
   &__close {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

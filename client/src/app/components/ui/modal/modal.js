@@ -1,5 +1,5 @@
 import './modal.scss';
-import { showError } from '../../../../shared/lib/alerts';
+import { showError } from '../../../shared/lib/alerts';
 const createModal = (content) => {
   const modal = document.createElement('div');
   modal.classList.add('modal');
@@ -27,15 +27,6 @@ const initialize = (content) => {
         document.body.style.overflow = '';
       });
     });
-
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        close();
-        window.removeEventListener('keydown', onKeyDown);
-      }
-    };
-
-    window.addEventListener('keydown', onKeyDown);
   } catch (err) {
     showError(err);
   }

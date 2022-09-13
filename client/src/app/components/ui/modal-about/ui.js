@@ -1,3 +1,5 @@
+import './index.scss';
+
 export const layout = (bookInfo) => {
   return `
      
