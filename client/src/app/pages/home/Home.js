@@ -12,6 +12,8 @@ import { layoutCreate } from '../../components/ui/modal-create/ui';
 import {
   modalFavoriteBtnHandler,
   modalTrashBtnHandler,
+  onCardFavoriteToggle,
+  onDeleteBook,
 } from '../../components/ui/modal-about';
 
 import './home.scss';
@@ -57,8 +59,33 @@ const Home = {
         });
       });
     } catch (err) {
+      console.log(err);
       showError('Oops, something went wrong');
     }
+    const bookCards = document.querySelectorAll('.books__item');
+    bookCards.forEach((card) => {
+      const trashBtn = card.querySelector('.btn-trash');
+      const favoriteBtn = card.querySelector('.btn-favorite');
+      favoriteBtn.addEventListener('click', async () => {
+        const id = favoriteBtn.getAttribute('data-favorite');
+        const { data: singleBook } = await booksService.getById(id);
+        const btnFavoriteIcon = document.getElementById(
+          `btn-favorite-icon-${id}`
+        );
+        if (await onCardFavoriteToggle(singleBook)) {
+          singleBook.isFavorite = !singleBook.isFavorite;
+          btnFavoriteIcon.setAttribute(
+            'fill',
+            singleBook.isFavorite ? 'red' : 'gray'
+          );
+        }
+      });
+      trashBtn.addEventListener('click', async () => {
+        const id = trashBtn.getAttribute('data-delete');
+        const { data: singleBook } = await booksService.getById(id);
+        onDeleteBook(singleBook);
+      });
+    });
     const btnAddBook = document.querySelector('.books__btn');
     btnAddBook.addEventListener('click', () => {
       modal.initialize(layoutCreate());

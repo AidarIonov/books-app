@@ -1,7 +1,7 @@
-import { deleteDialog, showError } from "../../../shared/lib/alerts";
-import { booksService } from "../../../service/books.service";
+import { deleteDialog, showError } from '../../../shared/lib/alerts';
+import { booksService } from '../../../service/books.service';
 
-const onDeleteBook = async (book) => {
+export const onDeleteBook = async (book) => {
   let result = false;
   await deleteDialog(async () => {
     await booksService.delete(book.id);
@@ -13,7 +13,7 @@ const onDeleteBook = async (book) => {
   return result;
 };
 
-const onCardFavoriteToggle = async (bookInfoBeforeCommit) => {
+export const onCardFavoriteToggle = async (bookInfoBeforeCommit) => {
   try {
     await booksService.update(bookInfoBeforeCommit.id, {
       isFavorite: !bookInfoBeforeCommit.isFavorite,
@@ -24,7 +24,6 @@ const onCardFavoriteToggle = async (bookInfoBeforeCommit) => {
     return false;
   }
 };
-
 
 export const modalTrashBtnHandler = (book) => {
   const trashBtn = document.querySelector('#btn-trash-modal');
@@ -38,10 +37,14 @@ export const modalFavoriteBtnHandler = (book) => {
   const btnFavoriteIcon = document.getElementById(
     'modal-about-btn-favorite-icon'
   );
+  const cardBtnFavoriteIcon = document.getElementById(
+    `btn-favorite-icon-${book.id}`
+  );
   favoriteBtn.addEventListener('click', async () => {
     if (await onCardFavoriteToggle(book)) {
       book.isFavorite = !book.isFavorite;
-      btnFavoriteIcon.setAttribute(
+      btnFavoriteIcon.setAttribute('fill', book.isFavorite ? 'red' : 'gray');
+      cardBtnFavoriteIcon.setAttribute(
         'fill',
         book.isFavorite ? 'red' : 'gray'
       );

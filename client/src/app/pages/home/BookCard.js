@@ -3,9 +3,10 @@ export const BookCard = (book) => `
         <h3>${book.author}</h3>
         <p>${book.name}</p>
           <div class='books__item-action-btns'>
-                <button class="btn" type="button">
+                <button data-favorite='${book.id}' class="btn btn-favorite" type="button">
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path 
+                        id='btn-favorite-icon-${book.id}'
                         fill=${book.isFavorite ? 'red' : 'gray'}
                         d="M19.3762 2.5401C18.5386 0.825205 16.1258 -0.577889 13.3191 
                         0.239024C11.9779 0.625491 10.8078 1.45428 9.99986 2.58999C9.19192 1.45428 8.02178 0.625491

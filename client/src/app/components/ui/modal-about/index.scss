@@ -47,6 +47,7 @@
   display: flex;
   justify-content: center;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
 .modal-about__btn-edit {
@@ -76,28 +77,8 @@
 
 @media (max-width: 576px) {
   .modal-about {
-    &__container {
-      padding-bottom: 25px;
-    }
-
-    &__props {
-      margin-top: 30px;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-    }
-
-    &__props-col {
-      gap: 15px;
-    }
-
-    &__buttons {
-      margin-top: 30px;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
+    &__book-title {
+      font-size: 30px;
     }
   }
 }

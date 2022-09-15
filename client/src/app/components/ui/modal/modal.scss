@@ -36,3 +36,9 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 1300px) {
+  .modal__content {
+    width: 80vw;
+  }
+}

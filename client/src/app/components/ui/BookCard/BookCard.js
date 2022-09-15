@@ -1,5 +1,4 @@
 import { layout } from './ui';
-import './bookCard.scss';
 
 export class BookCard extends HTMLElement {
   #shadowRoot;
@@ -7,7 +6,7 @@ export class BookCard extends HTMLElement {
   #onDelete;
   #onFavoriteToggle;
 
-  constructor(onCardClick, onDelete, onFavoriteToggle) {
+  constructor(onDelete, onFavoriteToggle) {
     super();
     // this.#onCardClick = onCardClick;
     this.#onDelete = onDelete;
