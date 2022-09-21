@@ -26,3 +26,9 @@
   font-size: 2.5rem;
   font-weight: 700;
 }
+
+@media screen and (max-width: 340px) {
+  .header__title {
+    font-size: 1.9rem;
+  }
+}

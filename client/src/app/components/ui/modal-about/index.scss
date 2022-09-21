@@ -24,6 +24,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .modal-about__props-col {

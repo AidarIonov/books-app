@@ -1,7 +1,10 @@
 import { showError, showSuccessMsg } from '../../shared/lib/alerts';
 import { authService } from '../../service/auth.service';
 import { errorCatch } from '../../utils/errorCatch';
-import FormValidator, { validateLength } from '../../utils/FormValidator';
+import FormValidator, {
+  validateLength,
+  validateRepeatPassword,
+} from '../../utils/FormValidator';
 import { redirect } from '../../utils/redirect';
 
 import '../login/login.scss';
@@ -19,6 +22,10 @@ const Register = {
         </div>
         <div class="form-field">
           <input type="password" name='password' class='password-field field-common' placeholder='password'/>
+          <span class="error-message"></span>
+        </div>
+        <div class="form-field">
+          <input type="password" name='repeat-password' class='repeat-password-field field-common' placeholder='Repeat your password'/>
           <span class="error-message"></span>
         </div>
         <div class="form-field">
@@ -50,7 +57,7 @@ const Register = {
           age
         );
         if (res.data) {
-          showSuccessMsg('Заебцаа', redirectToLoginPage);
+          showSuccessMsg('Success register', redirectToLoginPage);
         }
       } catch (error) {
         showError(errorCatch(error));
@@ -59,6 +66,7 @@ const Register = {
     const loginForm = new FormValidator('#register-form', handleSubmit);
     loginForm.register('.username-field', validateLength);
     loginForm.register('.password-field', validateLength);
+    loginForm.register('.repeat-password-field', validateRepeatPassword);
     loginForm.register('.firstName-field', validateLength);
     loginForm.register('.age-field', validateLength);
   },

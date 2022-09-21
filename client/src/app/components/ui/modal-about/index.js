@@ -1,5 +1,6 @@
 import { deleteDialog, showError } from '../../../shared/lib/alerts';
 import { booksService } from '../../../service/books.service';
+import { modal } from '../modal/modal';
 
 export const onDeleteBook = async (book) => {
   let result = false;
@@ -7,6 +8,8 @@ export const onDeleteBook = async (book) => {
     await booksService.delete(book.id);
     const bookCard = document.getElementById(book.id);
     bookCard.remove();
+    const modal = document.querySelector('.modal')
+    modal.remove()
     result = true;
   });
 

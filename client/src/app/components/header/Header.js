@@ -28,6 +28,7 @@ const Header = {
       });
     } else {
       logoutBtn.style.display = 'none'
+      //Todo remove comment 
       // window.location.replace('http://localhost:8081/#/login');
     }
   },

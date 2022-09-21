@@ -40,9 +40,10 @@ const Home = {
       if (!books.length) {
         const element = document.createElement('h2');
         element.textContent = 'Books not found:(';
-        booksContainer.append(element);
+        booksContainer.appendChild(element);
+      } else {
+        booksContainer.innerHTML = books.map((book) => BookCard(book)).join('');
       }
-      booksContainer.innerHTML = books.map((book) => BookCard(book)).join('');
     };
 
     try {

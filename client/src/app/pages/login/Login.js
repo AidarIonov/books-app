@@ -33,7 +33,7 @@ const Login = {
       try {
         const res = await authService.login(data.username, data.password);
         if (res.data) {
-          showSuccessMsg('Заебись', redirectToHome);
+          showSuccessMsg('Success login', redirectToHome);
         }
       } catch (error) {
         showError(errorCatch(error));

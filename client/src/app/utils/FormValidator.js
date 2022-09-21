@@ -3,7 +3,7 @@ export class FormValidator {
     this.form = document.querySelector(selector);
     this.inputsWithErrors = new Set();
     this.fields = {};
-    this.bookId = bookId
+    this.bookId = bookId;
 
     this.form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -21,7 +21,7 @@ export class FormValidator {
     const inputField = this.form.querySelector(selector);
     const errorElement = inputField.nextElementSibling;
     const execute = (hideErrors) => {
-      const { pass, errorMessage } = check(inputField.value, inputField);
+      const { pass, errorMessage } = check(inputField.value, this.fields['password']);
       errorElement.textContent = hideErrors ? '' : errorMessage;
       hideErrors
         ? inputField.classList.remove('invalid')
@@ -47,6 +47,17 @@ export const validateLength = (value) => {
     return {
       pass: false,
       errorMessage: 'Field is required*',
+    };
+  }
+  return {
+    pass: true,
+  };
+};
+export const validateRepeatPassword = (currValue, prevValue) => {
+  if (currValue !== prevValue) {
+    return {
+      pass: false,
+      errorMessage: 'Passwords doesn\'t match',
     };
   }
   return {

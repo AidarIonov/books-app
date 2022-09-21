@@ -12,21 +12,21 @@ export const layout = (bookInfo) => {
                                   <span class="modal-about__prop-label">Publish house:</span> ${
                                     bookInfo.publishHouse
                                       ? bookInfo.publishHouse
-                                      : 'Unknown'
+                                      : 'Is not specified'
                                   }
                               </p>
                               <p>
                                   <span class="modal-about__prop-label">Lang:</span> ${
                                     bookInfo.originalLanguage
                                       ? bookInfo.originalLanguage
-                                      : 'Unknown'
+                                      : 'Is not specified'
                                   }
                                   </p>
                               <p>
                                   <span class="modal-about__prop-label">Publish year:</span> ${
                                     bookInfo.publishYear
                                       ? bookInfo.publishYear
-                                      : 'Unknown'
+                                      : 'Is not specified'
                                   }
                               </p>
                           </div>
@@ -35,14 +35,14 @@ export const layout = (bookInfo) => {
                                   <span class="modal-about__prop-label">Pages number:</span> ${
                                     bookInfo.pagesNumber
                                       ? bookInfo.pagesNumber
-                                      : 'Unknown'
+                                      : 'Is not specified'
                                   }
                               </p>
                               <p>
                                   <span class="modal-about__prop-label">Genres:</span>  ${
                                     bookInfo.genres.length > 1
                                       ? bookInfo.genres.join(', ')
-                                      : 'Unknown'
+                                      : 'Is not specified'
                                   }
                               </p>
                           </div>
@@ -51,6 +51,7 @@ export const layout = (bookInfo) => {
                           <button class="btn modal-about__btn-edit" id="modal-about-btn-edit" type="button">
                               Edit
                           </button>
+                          <div class="action__btns">
                           <button class="btn" id="btn-favorite-modal" type="button">
                               <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                   <path 
@@ -79,7 +80,7 @@ export const layout = (bookInfo) => {
                                       3.6H6.04167V1.8H13.9583V3.6Z"
                                   />
                               </svg>
-                          </button>
+                          </button></div>
                       </div>
   `;
 };
